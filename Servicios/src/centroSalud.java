@@ -3,7 +3,7 @@ import java.util.concurrent.Semaphore;
 
 public class centroSalud extends Thread{
 
-	private static Semaphore centSal = new Semaphore(5);//Numero de hilos que adquieren dicho recurso y se ejecutan concurrentemente. 10 pacientes esperando
+	private static Semaphore centSal = new Semaphore(2);//Numero de hilos que adquieren dicho recurso y se ejecutan paralelamente. 10 pacientes esperando
 	protected int identificador=0;
 	private static Scanner sc = new Scanner(System.in);
 	
