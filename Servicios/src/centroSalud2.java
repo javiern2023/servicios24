@@ -3,8 +3,9 @@ import java.util.concurrent.Semaphore;
 
 public class centroSalud2 extends Thread{
 
-	private static Semaphore centSal = new Semaphore(3);//Numero de hilos que adquieren dicho recurso y se ejecutan concurrentemente. 10 pacientes esperando
+	private static Semaphore centSal = new Semaphore(5);//Numero de hilos que adquieren dicho recurso y se ejecutan concurrentemente. 10 pacientes esperando
 	private static Semaphore consulta = new Semaphore(1);
+	//private static Semaphore consulta1 = new Semaphore(1);
 	protected int identificador=0;
 	private static Scanner sc = new Scanner(System.in);
 	
@@ -20,10 +21,11 @@ public class centroSalud2 extends Thread{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				
+				//Bloqueo de la sala de espera
 				centSal.acquire();//Hilo adquiere el semáforo o testigo
 				System.out.println("El paciente "+ this.identificador + " entra a la sala de espera");
-				
+					
+					//Bloque de la consulta
 					consulta.acquire();//Paciente entra en la consulta
 					System.out.println("El paciente "+ this.identificador + " entra en consulta");
 					
